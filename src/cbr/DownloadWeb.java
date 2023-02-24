@@ -1,13 +1,14 @@
 package cbr;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class DownloadWeb {
+    //// Скачиваем веб страницу !!!!
     public String downloadWebPage (String url) throws IOException {
         StringBuilder result = new StringBuilder() ;
         String line;
@@ -19,5 +20,16 @@ public class DownloadWeb {
             }
         }
         return result.toString();
+    }
+
+////записываем строку в XML фаил !!!
+    public void WriteToFile (String f){
+        Path path = Paths.get("PRS.xml");
+        //byte[] b = f.getBytes();
+        try {
+            Files.writeString(path, f);
+        }catch (IOException e){
+
+        }
     }
 }
